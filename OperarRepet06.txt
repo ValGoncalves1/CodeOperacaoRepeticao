@@ -1,0 +1,116 @@
+class Program
+{
+    static void Main()
+    {
+        double valor;
+
+        // Solicita ao usuário para entrar com um valor positivo
+        while (true)
+        {
+            Console.Write("Digite um valor positivo: ");
+            valor = Convert.ToDouble(Console.ReadLine());
+
+            if (valor > 0)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Valor inválido. Por favor, digite um valor positivo.");
+            }
+        }
+
+        // Exibe a tabuada do valor inserido no intervalo de um a dez
+        Console.WriteLine($"Tabuada do número {valor}:");
+        
+        for (int i = 1; i <= 10; i++)
+        {
+            Console.WriteLine($"{valor} x {i} = {valor * i}");
+        }
+    }
+}
+Como o programa funciona:
+Declaração da variável valor: A variável valor é declarada para armazenar a entrada do usuário.
+Loop de entrada com validação: Um while (true) loop continua solicitando a entrada até que um valor positivo seja fornecido.
+O usuário é solicitado a inserir um valor.
+O valor inserido é convertido de string para double.
+Se o valor for positivo, o loop é quebrado usando break.
+Se o valor for inválido (negativo ou zero), uma mensagem de erro é exibida e o loop continua.
+Exibição da tabuada: Após a entrada de um valor positivo, um for loop é usado para calcular e exibir a tabuada do valor inserido, de 1 a 10.
+Como executar:
+Copie o código acima e cole-o em um arquivo chamado Program.cs.
+Abra o terminal ou prompt de comando.
+Navegue até o diretório onde o arquivo Program.cs está salvo.
+Compile o programa usando o comando: csc Program.cs.
+Execute o programa compilado com o comando: Program.
+Esse programa solicita um valor positivo do usuário e, após a entrada de um valor válido, exibe a tabuada desse valor no intervalo de 1 a 10.
+
+
+
+
+
+Entrar via teclado com um valor (X) qualquer. Travar a digitação, no sentido de aceitar somente valores positivos. Solicitar o intervalo que o programa que deverá calcular a tabuada do valor digitado, sendo que o segundo valor (B), deverá ser maior que o primeiro (A), caso contrário, digitar novamente somente o segundo. Após a validação dos dados, exibir a tabuada do valor digitado, no intervalo decrescente, ou seja, a tabuada de X no intervalo de B para A.
+ChatGPT
+Para implementar essa funcionalidade em C#, precisamos seguir estas etapas:
+
+Solicitar ao usuário que insira um valor (X) positivo.
+Solicitar ao usuário que insira um intervalo (A e B), garantindo que A seja menor que B.
+Exibir a tabuada do valor X no intervalo de B para A em ordem decrescente.
+Aqui está o código para realizar essas tarefas:
+
+csharp
+Copiar código
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double valorX;
+        
+        // Solicita ao usuário para entrar com um valor positivo (X)
+        while (true)
+        {
+            Console.Write("Digite um valor positivo (X): ");
+            valorX = Convert.ToDouble(Console.ReadLine());
+
+            if (valorX > 0)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Valor inválido. Por favor, digite um valor positivo.");
+            }
+        }
+
+        int intervaloA, intervaloB;
+
+        // Solicita ao usuário para entrar com o intervalo A e B, garantindo que B seja maior que A
+        Console.Write("Digite o valor inicial do intervalo (A): ");
+        intervaloA = Convert.ToInt32(Console.ReadLine());
+
+        while (true)
+        {
+            Console.Write("Digite o valor final do intervalo (B - deve ser maior que A): ");
+            intervaloB = Convert.ToInt32(Console.ReadLine());
+
+            if (intervaloB > intervaloA)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Valor inválido. O valor final do intervalo (B) deve ser maior que o valor inicial (A).");
+            }
+        }
+
+        // Exibe a tabuada do valor X no intervalo decrescente de B para A
+        Console.WriteLine($"Tabuada do número {valorX} no intervalo de {intervaloB} para {intervaloA}:");
+        
+        for (int i = intervaloB; i >= intervaloA; i--)
+        {
+            Console.WriteLine($"{valorX} x {i} = {valorX * i}");
+        }
+    }
+}
